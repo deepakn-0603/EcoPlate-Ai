@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { indianStatesAndCities } from '@/lib/indian-cities';
-import { Card } from '../ui/card';
+import { Card } from '@/components/ui/card';
 
 interface IndianCitySelectorProps {
   onSelect: (city: string) => void;
