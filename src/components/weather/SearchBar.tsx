@@ -50,7 +50,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-          placeholder="Search for a city..."
+          placeholder="Search for any city..."
           className="bg-glass text-white placeholder:text-gray-200 border-white/50 pl-10 h-12 text-lg font-headline rounded-full"
           aria-label="Search for a city"
         />

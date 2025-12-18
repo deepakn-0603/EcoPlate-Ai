@@ -7,13 +7,14 @@ import WeatherDetails from './WeatherDetails';
 import Forecast from './Forecast';
 import TemperatureToggle from './TemperatureToggle';
 import HourlyPrediction from './HourlyPrediction';
+import IndianCitySelector from './IndianCitySelector';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { getBackgroundClass } from '@/lib/weather';
 import type { WeatherData, ForecastData, TemperatureUnit } from '@/types/weather';
 
-const API_KEY = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY; 
+const API_KEY = "a3a4b0f01902ed2fc793b5d80d6db502";
 const API_BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 const WeatherDashboard: React.FC = () => {
@@ -28,7 +29,7 @@ const WeatherDashboard: React.FC = () => {
     if (!API_KEY) {
       toast({
         title: "API Key Missing",
-        description: "OpenWeatherMap API key is not configured. Please add NEXT_PUBLIC_OPENWEATHER_API_KEY to your .env.local file.",
+        description: "OpenWeatherMap API key is not configured. The app may not function correctly.",
         variant: "destructive",
         duration: 9000,
       });
@@ -77,7 +78,11 @@ const WeatherDashboard: React.FC = () => {
             <TemperatureToggle unit={unit} onToggle={setUnit} />
         </header>
 
-        <SearchBar onSearch={setLocation} isLoading={isLoading} />
+        <div className="w-full max-w-md mx-auto space-y-4">
+          <SearchBar onSearch={setLocation} isLoading={isLoading} />
+          <p className="text-center text-white text-sm">Or select a city in India:</p>
+          <IndianCitySelector onSelect={setLocation} />
+        </div>
         
         {isLoading && (
           <div className="w-full max-w-6xl space-y-8">
@@ -107,7 +112,7 @@ const WeatherDashboard: React.FC = () => {
         {!isLoading && !weatherData && (
             <div className="text-center text-white mt-20">
                 <h2 className="text-2xl font-headline">Welcome to WeatherVision</h2>
-                <p>Search for a city to get the latest weather forecast.</p>
+                <p>Search for a city or select one from the dropdowns to get the latest weather forecast.</p>
                 {!API_KEY && <p className="mt-4 text-red-300">API Key is missing. The app will not function correctly.</p>}
             </div>
         )}
