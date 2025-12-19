@@ -7,7 +7,6 @@ import WeatherDetails from './WeatherDetails';
 import Forecast from './Forecast';
 import TemperatureToggle from './TemperatureToggle';
 import HourlyPrediction from './HourlyPrediction';
-import IndianCitySelector from './IndianCitySelector';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
@@ -80,8 +79,6 @@ const WeatherDashboard: React.FC = () => {
 
         <div className="w-full max-w-md mx-auto space-y-4">
           <SearchBar onSearch={setLocation} isLoading={isLoading} />
-          <p className="text-center text-white text-sm">Or select a city in India:</p>
-          <IndianCitySelector onSelect={setLocation} />
         </div>
         
         {isLoading && (
@@ -112,7 +109,7 @@ const WeatherDashboard: React.FC = () => {
         {!isLoading && !weatherData && (
             <div className="text-center text-white mt-20">
                 <h2 className="text-2xl font-headline">Welcome to WeatherVision</h2>
-                <p>Search for a city or select one from the dropdowns to get the latest weather forecast.</p>
+                <p>Search for a city to get the latest weather forecast.</p>
                 {!API_KEY && <p className="mt-4 text-red-300">API Key is missing. The app will not function correctly.</p>}
             </div>
         )}
