@@ -4,65 +4,65 @@
 
 @layer base {
   :root {
-    --background: 209 100% 95%; /* #E5F3FF */
-    --foreground: 222.2 84% 4.9%;
+    --background: 260 80% 8%; /* Deep space blue/purple */
+    --foreground: 210 40% 98%;
 
-    --card: 210 40% 98%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 260 60% 15%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 210 40% 98%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 260 60% 15%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 206 100% 64%; /* #49A8FF */
+    --primary: 275 100% 70%; /* Vibrant Purple */
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 84% 4.9%;
+    --secondary: 260 50% 20%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 260 50% 20%;
+    --muted-foreground: 215.4 16.3% 56.9%;
 
-    --accent: 154 100% 64%; /* #49FFB3 */
-    --accent-foreground: 154 50% 10%;
+    --accent: 330 100% 65%; /* Electric Pink/Magenta */
+    --accent-foreground: 330 50% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 260 50% 25%;
+    --input: 260 50% 25%;
+    --ring: 275 100% 75%;
     
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 260 80% 8%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 260 60% 15%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 260 60% 15%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 206 100% 64%;
+    --primary: 275 100% 70%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 260 50% 20%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 260 50% 20%;
     --muted-foreground: 215.4 16.3% 56.9%;
 
-    --accent: 154 100% 64%;
-    --accent-foreground: 154 50% 10%;
+    --accent: 330 100% 65%;
+    --accent-foreground: 330 50% 10%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 260 50% 25%;
+    --input: 260 50% 25%;
+    --ring: 275 100% 75%;
   }
 }
 
@@ -74,27 +74,27 @@
     @apply bg-background text-foreground;
   }
   .bg-glass {
-    @apply bg-white/20 backdrop-blur-lg border border-white/30;
+    @apply bg-black/20 backdrop-blur-lg border border-white/10;
   }
   .dark .bg-glass {
-    @apply bg-black/20 backdrop-blur-lg border border-black/30;
+    @apply bg-black/20 backdrop-blur-lg border border-white/10;
   }
 }
 
 @layer utilities {
-  .bg-day-clear { @apply bg-gradient-to-br from-sky-400 to-blue-600; }
-  .bg-day-clouds { @apply bg-gradient-to-br from-slate-400 to-gray-600; }
-  .bg-day-rain { @apply bg-gradient-to-br from-slate-500 to-blue-800; }
-  .bg-day-snow { @apply bg-gradient-to-br from-sky-200 to-blue-400; }
-  .bg-day-thunderstorm { @apply bg-gradient-to-br from-slate-800 to-indigo-900; }
-  .bg-day-drizzle { @apply bg-gradient-to-br from-slate-400 to-blue-600; }
-  .bg-day-mist { @apply bg-gradient-to-br from-slate-300 to-gray-500; }
+  .bg-day-clear { @apply bg-gradient-to-br from-indigo-500 to-purple-800; }
+  .bg-day-clouds { @apply bg-gradient-to-br from-slate-600 to-gray-800; }
+  .bg-day-rain { @apply bg-gradient-to-br from-slate-700 to-indigo-900; }
+  .bg-day-snow { @apply bg-gradient-to-br from-sky-300 to-indigo-500; }
+  .bg-day-thunderstorm { @apply bg-gradient-to-br from-slate-900 to-purple-900; }
+  .bg-day-drizzle { @apply bg-gradient-to-br from-slate-600 to-indigo-800; }
+  .bg-day-mist { @apply bg-gradient-to-br from-slate-500 to-gray-700; }
 
-  .bg-night-clear { @apply bg-gradient-to-br from-gray-800 via-indigo-900 to-black; }
-  .bg-night-clouds { @apply bg-gradient-to-br from-slate-700 to-gray-900; }
-  .bg-night-rain { @apply bg-gradient-to-br from-slate-800 to-indigo-900; }
-  .bg-night-snow { @apply bg-gradient-to-br from-slate-600 to-blue-900; }
-  .bg-night-thunderstorm { @apply bg-gradient-to-br from-gray-900 to-black; }
-  .bg-night-drizzle { @apply bg-gradient-to-br from-slate-700 to-indigo-900; }
-  .bg-night-mist { @apply bg-gradient-to-br from-slate-600 to-gray-800; }
+  .bg-night-clear { @apply bg-gradient-to-br from-gray-900 via-purple-900 to-black; }
+  .bg-night-clouds { @apply bg-gradient-to-br from-slate-800 to-gray-900; }
+  .bg-night-rain { @apply bg-gradient-to-br from-slate-900 to-indigo-900; }
+  .bg-night-snow { @apply bg-gradient-to-br from-slate-700 to-blue-900; }
+  .bg-night-thunderstorm { @apply bg-gradient-to-br from-gray-900 via-black to-purple-900; }
+  .bg-night-drizzle { @apply bg-gradient-to-br from-slate-800 to-indigo-900; }
+  .bg-night-mist { @apply bg-gradient-to-br from-slate-700 to-gray-900; }
 }
