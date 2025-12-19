@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Search, History, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -17,6 +17,16 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => {
   const [recentSearches, setRecentSearches] = useLocalStorage<string[]>('recentSearches', []);
   const [isFocused, setIsFocused] = useState(false);
 
+  const handleSearch = useCallback(() => {
+    if (!query) return;
+    onSearch(query);
+    if (!recentSearches.includes(query)) {
+      setRecentSearches([query, ...recentSearches.slice(0, 4)]);
+    }
+    setQuery('');
+    setIsFocused(false);
+  }, [query, onSearch, recentSearches, setRecentSearches]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Enter' && query) {
@@ -25,17 +35,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [query]);
-
-  const handleSearch = () => {
-    if (!query) return;
-    onSearch(query);
-    if (!recentSearches.includes(query)) {
-      setRecentSearches([query, ...recentSearches.slice(0, 4)]);
-    }
-    setQuery('');
-    setIsFocused(false);
-  };
+  }, [query, handleSearch]);
 
   const removeSearch = (searchToRemove: string) => {
     setRecentSearches(recentSearches.filter(s => s !== searchToRemove));
